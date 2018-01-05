@@ -36,16 +36,6 @@ if (process.env.NODE_ENV === 'production'){
 // all of the controller files
 app.use('/user', require('./lib/controllers/users'));
 
-// FRONT END: assuming that you have front end code existing in ./src
-// app.use(express.static(__dirname + '/src/build'));
-// app.get('/bundle.js', (req, res) => {
-//     res.sendFile(__dirname + '/src/build/bundle.js');
-// });
-// app.get('*', (req, res) => {
-//     res.sendFile(__dirname + '/src/build/index.html');
-// });
-// FRONT END
-
 const server = app.listen(port, () => {
     const host = server.address().address;
     const port = server.address().port;
