@@ -26,7 +26,7 @@ describe("Create user", () => {
                 result = res;
                 done();
             });
-    })
+    });
     describe("Results", () => {
         it("should not return an error", () => {
             should.not.exist(error);
@@ -40,12 +40,12 @@ describe("Create user", () => {
         it("should return the user's id", () => {
             result.body.id.should.be.a('number');
         });              
-    })
+    });
     after(done => {
         // Let's make sure to drop all rows. We can use the after hook for this
         models.users.sync({force: true})
         .then(() => {
             done();
         })
-    })
+    });
 });
