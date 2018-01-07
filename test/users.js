@@ -19,7 +19,6 @@ describe("Create user", () => {
         chai.request(server)
             .post('/user')
             .set('content-type', 'application/json')
-            .set('x-token', 'some-token')
             .send(body)
             .end((err, res, body) => {
                 error = err;
