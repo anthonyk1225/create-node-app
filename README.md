@@ -40,6 +40,12 @@ Make sure everything is running smoothly
 npm start
 ```
 
+## Using sequelize
+Coming soon, for now reference the docs
+* [Sequelize](http://docs.sequelizejs.com/manual/tutorial/models-definition.html) - Models
+* [Sequelize](http://docs.sequelizejs.com/manual/tutorial/migrations.html) - Migrations
+
+
 ## Running tests
 
 Let's test our only endpoint
