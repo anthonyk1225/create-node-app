@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Clone the repo, fork it, do whatever you prefer to get it on your machine
+Fork the repo
 
 ### Prerequisites
 
