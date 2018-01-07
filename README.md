@@ -2,33 +2,47 @@
 
 ## Getting Started
 
-Fork the repo
+Make sure to fork the repo.
 
 ### Prerequisites
 
-We assume you will be using postgres. You can use any db you like as long as sequelize supports it in their dialiect. If you plan on using postgres, make sure you have it installed on your machine
+We're going to be using postgres. If you prefer to use another DB, make sure sequelize supports it as a dialect. Make all necessary changes in
+```create-node-app/lib/config/config.json ```
 
-* [PostgreSQL](https://www.postgresql.org/download/)
+* [PostgreSQL](https://www.postgresql.org/download/) - Download
+
+We also want to use be able to use es6, es7 and beyond. Make sure you have at least Node V8.0.0, which comes with NPM V5
+
+* [Node](https://nodejs.org/en/download/) - Download
 
 ### Installing
 
-First, install the dependencies
+Install the dependencies
 
 ```
 npm install
 ```
 
-and then create & migrate the databases
+Create and migrate development and test databases
 
 ```
 bash create-db.sh
 ```
 
-Done.
+If for some reason you need to start fresh, go ahead and run
+```
+bash drop-db.sh
+bash create-db.sh
+```
 
-## Running the tests
+Make sure everything is running smoothly
+```
+npm start
+```
 
-Make sure all tests pass
+## Running tests
+
+Let's test our only endpoint
 
 ```
 npm test
@@ -36,7 +50,7 @@ npm test
 
 ### User tests
 
-We're testing the create user endpoint; which will create a user or get a user if it already exists
+We're testing the create user endpoint; which will create a user or get a user if it already exists. What does this test for?
 
 The response should be successful
 
@@ -46,7 +60,7 @@ it("should not return an error", () => {
 });
 ```
 
-The response should contain the correct code
+The response should contain the correct status code
 ```
 it("should return a 200 code", () => {
     result.should.have.status(200);
@@ -66,26 +80,20 @@ it("should return the user's id", () => {
     result.body.id.should.be.a('number');
 }); 
 ```
-We want to write tests that make sure the endpoints we create are responding with expected behavior. We can even write tests first and then write code to make it pass!
-
-## Deployment
-
-TBD
+We want to write tests that make sure the endpoints we create are responding with expected behavior. We can even write tests first and then write code to make it pass (TDD)!
 
 ## Built With
 
 * [Express](https://expressjs.com/) - The framework used
-* [NPM](https://www.npmjs.com/) - Dependency Management
 * [Sequelize](http://docs.sequelizejs.com/) - promised based ORM and migration manager
 * [Mocha](https://mochajs.org/) - testing framework
+* [Chai](http://chaijs.com/) - assertion library
+
+*Node, NPM and postgres mentioned above*
 
 ## Contributing
 
-If something doesn't look right, feel free to make a pull request.
-
-## Versioning
-
-TBD
+If you would like to add or amend anything, please feel free to make a pull request.
 
 ## Authors
 
