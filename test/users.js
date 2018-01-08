@@ -1,3 +1,4 @@
+'use strict';
 process.env.NODE_ENV = 'test';
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -38,10 +39,43 @@ describe("Create user", () => {
         });
         it("should return the user's id", () => {
             result.body.id.should.be.a('number');
-        });              
+        });
+    });
+});
+
+describe("Get user", () => {
+    let error = true;
+    let result;
+    before(done => {
+        chai.request(server)
+            .get('/user')
+            .set('x-token', 'some-value')
+            .query({email: "jdoe@us.company.com"})
+            .end((err, res) => {
+                error = err;
+                result = res;
+                done();
+            });
+    });
+    describe("Results", () => {
+        it("should not return an error", () => {
+            should.not.exist(error);
+        });
+        it("should return a 200 code", () => {
+            result.should.have.status(200);
+        });
+        it("should return the user object", () => {
+            result.body.should.be.a("object");
+        });
+        it("should return a user's email ", () => {
+            result.body.email.should.be.a('string');
+        });
+        it("should return the correct user ", () => {
+            result.body.email.should.equal("jdoe@us.company.com");
+        });        
     });
     after(done => {
-        // Let's make sure to drop all rows. We can use the after hook for this
+        // We can use this after hook for dropping all rows. 
         models.users.sync({force: true})
         .then(() => {
             done();

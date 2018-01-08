@@ -23,6 +23,10 @@ Install the dependencies
 npm install
 ```
 
+Make sure that you can connect to your DB before proceeding
+* [PostgreSQL](https://www.postgresql.org/download/) - Tutorial for mac
+* [PostgreSQL](http://suite.opengeo.org/docs/latest/dataadmin/pgGettingStarted/firstconnect.html) - Tutorial for linux
+
 Create and migrate development and test databases
 
 ```
