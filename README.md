@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Make sure to fork the repo.
+Fork the repo
 
 ### Prerequisites
 
@@ -11,7 +11,7 @@ We're going to be using postgres. If you prefer to use another DB, make sure seq
 
 * [PostgreSQL](https://www.postgresql.org/download/) - Download
 
-We also want to use be able to use es6, es7 and beyond. Make sure you have at least Node V8.0.0, which comes with NPM V5
+We also want to be able to use es6, es7 and beyond. Make sure you have at least Node V8.0.0, which comes with NPM V5
 
 * [Node](https://nodejs.org/en/download/) - Download
 
@@ -31,6 +31,7 @@ Create and migrate development and test databases
 
 ```
 bash create-db.sh
+bash migrate-db.sh
 ```
 
 If for some reason you need to start fresh, go ahead and run
@@ -52,7 +53,7 @@ Coming soon, for now reference the docs
 
 ## Running tests
 
-Let's test our only endpoint
+Let's test our endpoints
 
 ```
 npm test
@@ -60,7 +61,7 @@ npm test
 
 ### User tests
 
-We're testing the create user endpoint; which will create a user or get a user if it already exists. What does this test for?
+Let's go over the create user endpoint; this will either create or get a user, if it already exists. What does this test for?
 
 The response should be successful
 

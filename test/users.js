@@ -8,13 +8,17 @@ const should = chai.should();
 const assert = chai.assert;
 chai.use(chaiHttp);
 
+let userId;
+let token = 'some token';
+
 describe("Create user", () => {
     let error = true;
     let result;
 	let body = {
         "first": "john",
         "last": "doe",
-        "email": "jdoe@us.company.com"
+        "email": "jdoe@us.company.com",
+        "password": "password"
 	};
     before(done => {
         chai.request(server)
@@ -24,6 +28,7 @@ describe("Create user", () => {
             .end((err, res, body) => {
                 error = err;
                 result = res;
+                userId = result.body.id;
                 done();
             });
     });
@@ -43,13 +48,14 @@ describe("Create user", () => {
     });
 });
 
-describe("Get user", () => {
+describe("Get user(yourself)", () => {
     let error = true;
     let result;
     before(done => {
         chai.request(server)
             .get('/user')
-            .set('x-token', 'some-value')
+            .set('x-token', token)
+            .set('x-user-id', userId)
             .query({email: "jdoe@us.company.com"})
             .end((err, res) => {
                 error = err;
@@ -67,16 +73,16 @@ describe("Get user", () => {
         it("should return the user object", () => {
             result.body.should.be.a("object");
         });
-        it("should return a user's email ", () => {
+        it("should return a user's email", () => {
             result.body.email.should.be.a('string');
         });
-        it("should return the correct user ", () => {
+        it("should return the correct user", () => {
             result.body.email.should.equal("jdoe@us.company.com");
-        });        
+        });
     });
     after(done => {
-        // We can use this after hook for dropping all rows. 
-        models.users.sync({force: true})
+        // We can use this after hook for dropping all rows in users and user_tokens 
+        models.users.destroy({truncate: true, cascade: true})
         .then(() => {
             done();
         })
