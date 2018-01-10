@@ -1,5 +1,9 @@
 # create-node-app
 
+## Docs
+
+Slate API docs can be found at http://keatinganthony.com/slate
+
 ## Getting Started
 
 Fork the repo
