@@ -2,36 +2,36 @@
 
 ## Docs
 
-Slate API docs can be found at http://keatinganthony.com/slate
+Slate API docs can be found at http://keatinganthony.com/slate.
 
 ## Getting Started
 
-Fork the repo
+Fork the repo.
 
 ### Prerequisites
 
 We're going to be using postgres. If you prefer to use another DB, make sure sequelize supports it as a dialect. Make all necessary changes in
-```create-node-app/lib/config/config.json ```
+```create-node-app/lib/config/config.json ```.
 
 * [PostgreSQL](https://www.postgresql.org/download/) - Download
 
-We also want to be able to use es6, es7 and beyond. Make sure you have at least Node V8.0.0, which comes with NPM V5
+We also want to be able to use es6, es7 and beyond. Make sure you have at least Node V8.0.0, which comes with NPM V5.
 
 * [Node](https://nodejs.org/en/download/) - Download
 
 ### Installing
 
-Install the dependencies
+Install the dependencies.
 
 ```
 npm install
 ```
 
-Make sure that you can connect to your DB before proceeding
+Make sure that you can connect to your DB before proceeding.
 * [PostgreSQL](https://www.postgresql.org/download/) - Tutorial for mac
 * [PostgreSQL](http://suite.opengeo.org/docs/latest/dataadmin/pgGettingStarted/firstconnect.html) - Tutorial for linux
 
-Create and migrate development and test databases
+Create and migrate development and test databases.
 
 ```
 bash create-db.sh
@@ -41,23 +41,24 @@ bash migrate-db.sh
 If for some reason you need to start fresh, go ahead and run
 ```
 bash drop-db.sh
-bash create-db.sh
 ```
 
-Make sure everything is running smoothly
+Make sure everything is running smoothly.
 ```
 npm start
 ```
 
 ## Using sequelize
-Coming soon, for now reference the docs
+We have two examples in `create-node-app/lib/migrations`. Two files create an initial model, one is changing a already existing column and another is creating a new column for a model. 
+
+Some documentation for what you will be working with.
 * [Sequelize](http://docs.sequelizejs.com/manual/tutorial/models-definition.html) - Models
 * [Sequelize](http://docs.sequelizejs.com/manual/tutorial/migrations.html) - Migrations
 
 
 ## Running tests
 
-Let's test our endpoints
+Let's test our endpoints.
 
 ```
 npm test
@@ -67,7 +68,7 @@ npm test
 
 Let's go over the create user endpoint; this will either create or get a user, if it already exists. What does this test for?
 
-The response should be successful
+The response should be successful.
 
 ```
 it("should not return an error", () => {
@@ -75,21 +76,21 @@ it("should not return an error", () => {
 });
 ```
 
-The response should contain the correct status code
+The response should contain the correct status code.
 ```
 it("should return a 200 code", () => {
     result.should.have.status(200);
 });
 ```
 
-The response should let us know a new entry was made
+The response should let us know a new entry was made.
 ```
 it("should have created a new entry", () => {
     result.body.created.should.equal(true);
 });
 ```
 
-The response should contain the user's ID
+The response should contain the user's ID.
 ```
 it("should return the user's id", () => {
     result.body.id.should.be.a('number');
@@ -104,7 +105,7 @@ We want to write tests that make sure the endpoints we create are responding wit
 * [Mocha](https://mochajs.org/) - testing framework
 * [Chai](http://chaijs.com/) - assertion library
 
-*Node, NPM and postgres mentioned above*
+*Node, NPM and postgres mentioned above*.
 
 ## Contributing
 
@@ -114,12 +115,12 @@ If you would like to add or amend anything, please feel free to make a pull requ
 
 * **Anthony Keating** 
 
-See also the list of [contributors](https://github.com/anthonyk1225/create-node-app/graphs/contributors) who participated in this project.
+ [contributors](https://github.com/anthonyk1225/create-node-app/graphs/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* The open source community

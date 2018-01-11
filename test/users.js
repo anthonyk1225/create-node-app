@@ -9,7 +9,7 @@ const assert = chai.assert;
 chai.use(chaiHttp);
 
 let userId;
-let token = 'some token';
+let token;
 
 describe("Create user", () => {
     let error = true;
@@ -18,7 +18,7 @@ describe("Create user", () => {
         "first": "john",
         "last": "doe",
         "email": "jdoe@us.company.com",
-        "password": "password"
+        "password": "password1"
 	};
     before(done => {
         chai.request(server)
@@ -44,6 +44,47 @@ describe("Create user", () => {
         });
         it("should return the user's id", () => {
             result.body.id.should.be.a('number');
+        });
+    });
+});
+
+describe("Login", () => {
+    let error = true;
+    let result;
+    const body = {
+        "email": "jdoe@us.company.com", 
+        "password": "password1"
+    };
+    before(done => {
+        chai.request(server)
+            .post('/user/login')
+            .set('content-type', 'application/json')
+            .send(body)
+            .end((err, res) => {
+                error = err;
+                result = res;
+                token = result.body.token
+                done();
+            })
+    });
+    describe("Results", () => {
+        it("should not return an error", () => {
+            should.not.exist(error);
+        });
+        it("should return a 200 code", () => {
+            result.should.have.status(200);
+        });
+        it("should return the user object", () => {
+            result.body.should.be.a("object");
+        });
+        it("should return a user's email", () => {
+            result.body.email.should.be.a('string');
+        });
+        it("should return the correct user", () => {
+            result.body.email.should.equal("jdoe@us.company.com");
+        });
+        it("should return the user's token", () => {
+            result.body.token.should.be.a('string');
         });
     });
 });
@@ -86,5 +127,5 @@ describe("Get user(yourself)", () => {
         .then(() => {
             done();
         })
-    });
+    });    
 });
