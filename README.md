@@ -34,18 +34,18 @@ Make sure that you can connect to your DB before proceeding.
 Create and migrate development and test databases.
 
 ```
-bash create-db.sh
-bash migrate-db.sh
+bash create-db.sh // Creates databases
+bash migrate-db.sh // Migrates databases
 ```
 
 If for some reason you need to start fresh, go ahead and run
 ```
-bash drop-db.sh
+bash drop-db.sh // Drops databases
 ```
 
 Make sure everything is running smoothly.
 ```
-npm start
+npm start // Creates a node_modules folder and installs all packages in packages.json
 ```
 
 ## Using sequelize
