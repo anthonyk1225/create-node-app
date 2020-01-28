@@ -1,5 +1,5 @@
 {
-  "name": "create-node-app",
+  "name": "vocabulary-backend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -12,13 +12,11 @@
     "url": ""
   },
   "author": "Anthony Keating",
-  "license": "MIT",
+  "license": "Private",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "express": "^4.17.1",
-    "lodash": "^4.17.15",
     "mocha": "^6.2.2",
     "moment": "^2.24.0",
     "pg": "^7.14.0",

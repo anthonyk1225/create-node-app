@@ -34,7 +34,8 @@ if (process.env.NODE_ENV === 'production'){
 }
 
 // all of the controller files
-app.use('/user', require('./lib/controllers/users'));
+app.use('/words', require('./lib/controllers/words'));
+app.use('/classes', require('./lib/controllers/classes'));
 
 const server = app.listen(port, () => {
     const host = server.address().address;

@@ -2,21 +2,21 @@
   "development": {
     "username": "",
     "password": "",
-    "database": "createnode",
+    "database": "vocabulary",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "",
     "password": "",
-    "database": "createnodetest",
+    "database": "vocabularytest",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "",
     "password": "",
-    "database": "createnode",
+    "database": "",
     "host": "",
     "dialect": "postgres"
   }
